@@ -181,4 +181,8 @@ def calculate_steering(pid_controller, lane_positions, img_width, target_lane='c
     if is_lane_changing:
         return np.clip(-pid_output * 20.0, -15.0, 15.0)
     else:
+<<<<<<< HEAD
         return np.clip(-pid_output * 35.0, -30.0, 30.0)
+=======
+        return np.clip(-pid_output * 25.0, -30.0, 30.0)
+>>>>>>> Fix: Lane change guard logic for Truck 0
