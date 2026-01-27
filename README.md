@@ -1,0 +1,2 @@
+# Truck-Platoon-2
+SEA:ME@KOREA TRUCK PLATOONING 2기 코드 정리
