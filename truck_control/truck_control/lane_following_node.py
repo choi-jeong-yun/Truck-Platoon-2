@@ -168,7 +168,8 @@ class LaneFollowingNode(Node):
         start_ts = time.monotonic()
         scale = self.guard_scale.get(tag, 1.0)
         def _check_and_change():
-            if self.maneuver_state in (ManeuverState.IDLE, ManeuverState.REORDER_COMPLETE, ManeuverState.COOLDOWN):
+            # 수동(MANUAL) 명령일 때는 IDLE 상태여도 종료하지 않도록 조건 수정
+            if tag != 'MANUAL' and self.maneuver_state in (ManeuverState.IDLE, ManeuverState.REORDER_COMPLETE, ManeuverState.COOLDOWN):
                 self.get_logger().info(f"[{tag}] Truck {truck_id} 가드 취소(FSM 종료/전이)")
                 return self._cancel_guard(truck_id, tag)
             if (self.change_timeout_sec is not None) and (time.monotonic() - start_ts > self.change_timeout_sec):
